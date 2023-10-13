@@ -15,7 +15,7 @@ struct ContentView: View {
             Group {
                 if filmHandler.isDownloading {
                     ActivityIndicator(title: "Fetching movies",
-                                      hintMessage: "This might take a while...")
+                                      hintMessage: "This API is sloooww...\nso this might take a while...")
                 } else {
                     List(filmHandler.sortedFilms, id: \.self) { film in
                         NavigationLink(value: film) {

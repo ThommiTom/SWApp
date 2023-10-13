@@ -18,6 +18,10 @@ struct FilmDetailView: View {
         List {
             FilmLabel(film: filmDetailHandler.film)
 
+            Section("Opening Crawl") {
+                Text(filmDetailHandler.film.openingCrawl)
+            }
+
             Section("Featured Characters") {
                 characterLabel
             }
@@ -35,17 +39,31 @@ struct FilmDetailView: View {
             }
         }
         .navigationTitle("Movie Details")
+        .navigationDestination(for: Character.self) { character in
+            CharacterDetailView(character: character)
+        }
+        .navigationDestination(for: Planet.self) { planet in
+            PlanetDetailView(planet: planet)
+        }
+        .navigationDestination(for: Starship.self) { starship in
+            StarshipDetailView(starship: starship)
+        }
+        .navigationDestination(for: Vehicle.self) { vehicle in
+            VehicleDetailView(vehicle: vehicle)
+        }
     }
 
     var characterLabel: some View {
         Group {
             if filmDetailHandler.fetchingCharacters {
                 ActivityIndicator(title: "Fetching Characters",
-                                  hintMessage: "Please wait...")
+                                  hintMessage: "Patience, young padawan...")
             } else {
                 ForEach(filmDetailHandler.characters, id: \.self) { character in
                     VStack(alignment: .leading) {
-                        Text(character.name)
+                        NavigationLink(value: character) {
+                            Text(character.name)
+                        }
                     }
                 }
             }
@@ -56,11 +74,13 @@ struct FilmDetailView: View {
         Group {
             if filmDetailHandler.fetchingPlanets {
                 ActivityIndicator(title: "Fetching Planets",
-                                  hintMessage: "Please wait...")
+                                  hintMessage: "May the Force be with you.")
             } else {
                 ForEach(filmDetailHandler.planets, id: \.self) { planet in
                     VStack(alignment: .leading) {
-                        Text(planet.name)
+                        NavigationLink(value: planet) {
+                            Text(planet.name)
+                        }
                     }
                 }
             }
@@ -71,11 +91,13 @@ struct FilmDetailView: View {
         Group {
             if filmDetailHandler.fetchingStarships {
                 ActivityIndicator(title: "Fetching Starships",
-                                  hintMessage: "Please wait...")
+                                  hintMessage: "Never tell me the odds!")
             } else {
                 ForEach(filmDetailHandler.starships, id: \.self) { starship in
                     VStack(alignment: .leading) {
-                        Text(starship.name)
+                        NavigationLink(value: starship) {
+                            Text(starship.name)
+                        }
                     }
                 }
             }
@@ -86,11 +108,13 @@ struct FilmDetailView: View {
         Group {
             if filmDetailHandler.fetchingVehicles {
                 ActivityIndicator(title: "Fetching vehicles",
-                                  hintMessage: "Please wait...")
+                                  hintMessage: "It's a trap!")
             } else {
                 ForEach(filmDetailHandler.vehicles, id: \.self) { vehicle in
                     VStack(alignment: .leading) {
-                        Text(vehicle.name)
+                        NavigationLink(value: vehicle) {
+                            Text(vehicle.name)
+                        }
                     }
                 }
             }

@@ -24,40 +24,19 @@ struct FilmLabel: View {
     }
 
     var releaseDateLabel: some View {
-        HStack {
-            Text("Release Date")
-                .foregroundStyle(.primary)
-                .fontWeight(.semibold)
-            Spacer()
-            Text(film.releaseDate)
-                .foregroundStyle(.secondary)
-        }
-        .font(.caption)
+        KeyValueLabel(key: "Release Date",
+                      value: film.releaseDate)
     }
 
     var directorLabel: some View {
-        HStack {
-            Text("Director")
-                .foregroundStyle(.primary)
-                .fontWeight(.semibold)
-            Spacer()
-            Text(film.director)
-                .foregroundStyle(.secondary)
-        }
-        .font(.caption)
+        KeyValueLabel(key: "Director",
+                      value: film.director)
     }
 
     var producerLabel: some View {
-        HStack {
-            Text("Producer")
-                .foregroundStyle(.primary)
-                .fontWeight(.semibold)
-            Spacer()
-            Text(film.producer)
-                .foregroundStyle(.secondary)
-                .lineLimit(1)
-        }
-        .font(.caption)
+        KeyValueLabel(key: "Producer",
+                      value: film.producer)
+        .lineLimit(1)
     }
 }
 
