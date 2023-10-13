@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Film {
+struct Film: Decodable, Hashable {
     let episodeId: Int
     let title: String
     let openingCrawl: String
@@ -20,6 +20,6 @@ struct Film {
     let starships: [URL]
     let vehicles: [URL]
     let url: URL
-    let created: Date
-    let edited: Date
+//    let created: Date
+//    let edited: Date
 }

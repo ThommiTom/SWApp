@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Planet {
+struct Planet: Decodable, Hashable {
     let name: String
     let rotationPeriod: String
     let orbitalPeriod: String
@@ -19,7 +19,7 @@ struct Planet {
     let population: String
     let residents: [URL]
     let films: [URL]
-    let created: Date
-    let edited: Date
+//    let created: Date
+//    let edited: Date
     let url: URL
 }

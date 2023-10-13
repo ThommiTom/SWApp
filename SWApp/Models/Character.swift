@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Character {
+struct Character: Decodable, Hashable {
     let name: String
     let birthYear: String
     let homeworld: URL
@@ -22,6 +22,6 @@ struct Character {
     let starships: [URL]
     let vehicles: [URL]
     let url: URL
-    let created: Date
-    let edited: Date
+//    let created: Date
+//    let edited: Date
 }

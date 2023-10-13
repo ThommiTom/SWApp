@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Vehicle {
+struct Vehicle: Decodable, Hashable {
     let name: String
     let manufacturer: String
     let costInCredits: String
@@ -20,7 +20,7 @@ struct Vehicle {
     let vehicleClass: String
     let pilots: [URL]
     let films: [URL]
-    let created: Date
-    let edited: Date
+//    let created: Date
+//    let edited: Date
     let url: URL
 }

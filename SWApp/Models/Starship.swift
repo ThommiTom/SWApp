@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Starship {
+struct Starship: Decodable, Hashable {
     let name: String
     let model: String
     let manufacturer: String
@@ -23,7 +23,7 @@ struct Starship {
     let starshipClass: String
     let pilots: [URL]
     let films: [URL]
-    let created: Date
-    let edited: Date
+//    let created: Date
+//    let edited: Date
     let url: URL
 }
