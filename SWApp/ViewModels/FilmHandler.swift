@@ -15,8 +15,8 @@ class FilmHandler: ObservableObject {
         return films.sorted { $0.episodeId > $1.episodeId }
     }
 
-    var filmUrls: [URL?] = []
-    var dispatchGroup = DispatchGroup()
+    private var filmUrls: [URL?] = []
+    private var filmGroup = DispatchGroup()
 
     init() {
         // assumption: swapi.dev provides data for all 9 episodes
@@ -26,24 +26,25 @@ class FilmHandler: ObservableObject {
             filmUrls.append(URL(string: urlAsString))
         }
 
-        getStarWarsMovies()
+        fetchStarWarsMovies()
     }
 }
 
+// MARK: - extending FilmHandler by networking functionality
 extension FilmHandler {
-    private func getStarWarsMovies() {
+    private func fetchStarWarsMovies() {
         isDownloading = true
         for url in filmUrls {
-            getStarWarsMovie(url: url)
+            fetchStarWarsMovie(url: url)
         }
 
-        dispatchGroup.notify(queue: DispatchQueue.main) {
+        filmGroup.notify(queue: DispatchQueue.main) {
             self.isDownloading = false
         }
     }
 
-    private func getStarWarsMovie(url: URL?) {
-        dispatchGroup.enter()
+    private func fetchStarWarsMovie(url: URL?) {
+        filmGroup.enter()
         Task {
             await NetworkManager.shared.networkCall(with: url) { (result: Result<Film, NetworkError>) in
                 switch result {
@@ -55,7 +56,7 @@ extension FilmHandler {
                     print(error.rawValue)
                 }
 
-                self.dispatchGroup.leave()
+                self.filmGroup.leave()
             }
         }
     }

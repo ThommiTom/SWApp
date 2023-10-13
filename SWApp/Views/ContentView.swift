@@ -26,10 +26,7 @@ struct ContentView: View {
             }
             .navigationTitle("Star Wars Library")
             .navigationDestination(for: Film.self) { film in
-                VStack(content: {
-                    Text("WIP: Film Details coming here for")
-                    Text(film.title)
-                })
+                FilmDetailView(film: film)
             }
         }
     }

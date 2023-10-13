@@ -13,18 +13,18 @@ struct ActivityIndicator: View {
 
     var body: some View {
         VStack {
-            Spacer()
             Text(title)
                 .foregroundStyle(.primary)
                 .font(.title2)
-            Spacer()
+                .padding(.bottom, 15)
+
             ProgressView()
                 .scaleEffect(2)
-            Spacer()
+
             Text(hintMessage)
                 .foregroundStyle(.secondary)
                 .font(.subheadline)
-            Spacer()
+                .padding(.top, 20)
         }
     }
 }

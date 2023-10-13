@@ -19,7 +19,7 @@ struct Starship: Decodable, Hashable {
     let cargoCapacity: String
     let consumables: String
     let hyperdriveRating: String
-    let mglt: String
+    let MGLT: String
     let starshipClass: String
     let pilots: [URL]
     let films: [URL]
@@ -38,7 +38,7 @@ struct Starship: Decodable, Hashable {
                                   cargoCapacity: "Test",
                                   consumables: "Test",
                                   hyperdriveRating: "Test",
-                                  mglt: "Test",
+                                  MGLT: "Test",
                                   starshipClass: "Test",
                                   pilots: [],
                                   films: [],
