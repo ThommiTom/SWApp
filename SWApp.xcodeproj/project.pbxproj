@@ -21,6 +21,8 @@
 		4541C6782AD9787F00558846 /* FilmHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541C6772AD9787F00558846 /* FilmHandler.swift */; };
 		4541C67C2AD97EE900558846 /* FilmLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541C67B2AD97EE900558846 /* FilmLabel.swift */; };
 		4541C67E2AD9817F00558846 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541C67D2AD9817F00558846 /* ActivityIndicator.swift */; };
+		4541C6802AD986BB00558846 /* FilmDetailHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541C67F2AD986BB00558846 /* FilmDetailHandler.swift */; };
+		4541C6822AD98EB900558846 /* FilmDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541C6812AD98EB900558846 /* FilmDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		4541C6772AD9787F00558846 /* FilmHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmHandler.swift; sourceTree = "<group>"; };
 		4541C67B2AD97EE900558846 /* FilmLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmLabel.swift; sourceTree = "<group>"; };
 		4541C67D2AD9817F00558846 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		4541C67F2AD986BB00558846 /* FilmDetailHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailHandler.swift; sourceTree = "<group>"; };
+		4541C6812AD98EB900558846 /* FilmDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				4541C6772AD9787F00558846 /* FilmHandler.swift */,
+				4541C67F2AD986BB00558846 /* FilmDetailHandler.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 				4541C6582AD95E1000558846 /* ContentView.swift */,
 				4541C67D2AD9817F00558846 /* ActivityIndicator.swift */,
 				4541C67B2AD97EE900558846 /* FilmLabel.swift */,
+				4541C6812AD98EB900558846 /* FilmDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -230,7 +236,9 @@
 				4541C66D2AD9657600558846 /* Starship.swift in Sources */,
 				4541C6702AD9687E00558846 /* Vehicle.swift in Sources */,
 				4541C6732AD96B6D00558846 /* NetworkManager.swift in Sources */,
+				4541C6822AD98EB900558846 /* FilmDetailView.swift in Sources */,
 				4541C6762AD96C2E00558846 /* NetworkError.swift in Sources */,
+				4541C6802AD986BB00558846 /* FilmDetailHandler.swift in Sources */,
 				4541C6572AD95E1000558846 /* SWAppApp.swift in Sources */,
 				4541C6652AD960D900558846 /* Character.swift in Sources */,
 			);
