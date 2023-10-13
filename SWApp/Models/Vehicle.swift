@@ -23,4 +23,18 @@ struct Vehicle: Decodable, Hashable {
 //    let created: Date
 //    let edited: Date
     let url: URL
+
+    static let example = Vehicle(name: "Test",
+                                 manufacturer: "Test",
+                                 costInCredits: "Test",
+                                 length: "Test",
+                                 maxAtmospheringSpeed: "Test",
+                                 crew: "Test",
+                                 passengers: "Test",
+                                 cargoCapacity: "Test",
+                                 consumables: "Test",
+                                 vehicleClass: "Test",
+                                 pilots: [],
+                                 films: [],
+                                 url: URL(string: "https://swapi.dev/api/people/1/")!)
 }

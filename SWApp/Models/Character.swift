@@ -24,4 +24,19 @@ struct Character: Decodable, Hashable {
     let url: URL
 //    let created: Date
 //    let edited: Date
+
+    static var example = Character(name: "Test",
+                                   birthYear: "Test",
+                                   homeworld: URL(string: "https://swapi.dev/api/people/1/")!,
+                                   gender: "Test",
+                                   eyeColor: "Test",
+                                   hairColor: "Test",
+                                   skinColor: "Test",
+                                   height: "Test",
+                                   mass: "Test",
+                                   films: [],
+                                   species: [],
+                                   starships: [],
+                                   vehicles: [],
+                                   url: URL(string: "https://swapi.dev/api/people/1/")!)
 }

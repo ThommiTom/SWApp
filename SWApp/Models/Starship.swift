@@ -26,4 +26,21 @@ struct Starship: Decodable, Hashable {
 //    let created: Date
 //    let edited: Date
     let url: URL
+
+    static var example = Starship(name: "Test",
+                                  model: "Test",
+                                  manufacturer: "Test",
+                                  costInCredits: "Test",
+                                  length: "Test",
+                                  maxAtmospheringSpeed: "Test",
+                                  crew: "Test",
+                                  passengers: "Test",
+                                  cargoCapacity: "Test",
+                                  consumables: "Test",
+                                  hyperdriveRating: "Test",
+                                  mglt: "Test",
+                                  starshipClass: "Test",
+                                  pilots: [],
+                                  films: [],
+                                  url: URL(string: "https://swapi.dev/api/people/1/")!)
 }

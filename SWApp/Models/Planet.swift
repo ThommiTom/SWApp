@@ -22,4 +22,17 @@ struct Planet: Decodable, Hashable {
 //    let created: Date
 //    let edited: Date
     let url: URL
+
+    static var example = Planet(name: "Test",
+                                rotationPeriod: "Test",
+                                orbitalPeriod: "Test",
+                                diameter: "Test",
+                                climate: "Test",
+                                gravity: "Test",
+                                terrain: "Test",
+                                surfaceWater: "Test",
+                                population: "Test",
+                                residents: [],
+                                films: [],
+                                url: URL(string: "https://swapi.dev/api/people/1/")!)
 }

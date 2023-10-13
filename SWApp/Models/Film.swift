@@ -22,4 +22,17 @@ struct Film: Decodable, Hashable {
     let url: URL
 //    let created: Date
 //    let edited: Date
+
+    static let example = Film(episodeId: 0,
+                              title: "Test",
+                              openingCrawl: "Test Test Test Test",
+                              director: "Tester Testerson",
+                              producer: "Producer",
+                              releaseDate: "01-01-2000",
+                              characters: [],
+                              planets: [],
+                              species: [],
+                              starships: [],
+                              vehicles: [],
+                              url: URL(string: "https://swapi.dev/api/films/1/")!)
 }
