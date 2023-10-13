@@ -23,9 +23,7 @@ struct Starship {
     let starshipClass: String
     let pilots: [URL]
     let films: [URL]
-    
     let created: Date
     let edited: Date
-    
     let url: URL
 }

@@ -8,7 +8,6 @@
 import Foundation
 
 struct Vehicle {
-    
     let name: String
     let manufacturer: String
     let costInCredits: String
