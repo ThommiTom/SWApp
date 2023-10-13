@@ -18,6 +18,9 @@
 		4541C6702AD9687E00558846 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541C66F2AD9687E00558846 /* Vehicle.swift */; };
 		4541C6732AD96B6D00558846 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541C6722AD96B6D00558846 /* NetworkManager.swift */; };
 		4541C6762AD96C2E00558846 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541C6752AD96C2E00558846 /* NetworkError.swift */; };
+		4541C6782AD9787F00558846 /* FilmHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541C6772AD9787F00558846 /* FilmHandler.swift */; };
+		4541C67C2AD97EE900558846 /* FilmLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541C67B2AD97EE900558846 /* FilmLabel.swift */; };
+		4541C67E2AD9817F00558846 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541C67D2AD9817F00558846 /* ActivityIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +36,9 @@
 		4541C66F2AD9687E00558846 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 		4541C6722AD96B6D00558846 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4541C6752AD96C2E00558846 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		4541C6772AD9787F00558846 /* FilmHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmHandler.swift; sourceTree = "<group>"; };
+		4541C67B2AD97EE900558846 /* FilmLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmLabel.swift; sourceTree = "<group>"; };
+		4541C67D2AD9817F00558846 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +72,8 @@
 			isa = PBXGroup;
 			children = (
 				4541C6562AD95E1000558846 /* SWAppApp.swift */,
-				4541C6582AD95E1000558846 /* ContentView.swift */,
+				4541C67A2AD97C1300558846 /* Views */,
+				4541C6792AD9788300558846 /* ViewModels */,
 				4541C6672AD961F400558846 /* Models */,
 				4541C6742AD96B8E00558846 /* Networking */,
 				4541C65A2AD95E1100558846 /* Assets.xcassets */,
@@ -102,6 +109,24 @@
 				4541C6752AD96C2E00558846 /* NetworkError.swift */,
 			);
 			path = Networking;
+			sourceTree = "<group>";
+		};
+		4541C6792AD9788300558846 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4541C6772AD9787F00558846 /* FilmHandler.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		4541C67A2AD97C1300558846 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4541C6582AD95E1000558846 /* ContentView.swift */,
+				4541C67D2AD9817F00558846 /* ActivityIndicator.swift */,
+				4541C67B2AD97EE900558846 /* FilmLabel.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,9 +221,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4541C6782AD9787F00558846 /* FilmHandler.swift in Sources */,
 				4541C6592AD95E1000558846 /* ContentView.swift in Sources */,
 				4541C66B2AD964A100558846 /* Planet.swift in Sources */,
 				4541C6692AD9622600558846 /* Film.swift in Sources */,
+				4541C67E2AD9817F00558846 /* ActivityIndicator.swift in Sources */,
+				4541C67C2AD97EE900558846 /* FilmLabel.swift in Sources */,
 				4541C66D2AD9657600558846 /* Starship.swift in Sources */,
 				4541C6702AD9687E00558846 /* Vehicle.swift in Sources */,
 				4541C6732AD96B6D00558846 /* NetworkManager.swift in Sources */,
