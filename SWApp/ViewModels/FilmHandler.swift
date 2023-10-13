@@ -53,6 +53,7 @@ extension FilmHandler {
                         self.films.append(film)
                     }
                 case .failure(let error):
+                    // TODO: create a mechanism to provide user about failure cases
                     print(error.rawValue)
                 }
 

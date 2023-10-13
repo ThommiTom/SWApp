@@ -11,6 +11,7 @@ struct FilmDetailView: View {
     @StateObject var filmDetailHandler: FilmDetailHandler
 
     init(film: Film) {
+        // TODO: Caching would be smart to prevent data fetching every time the parent initializes this viewmodel
         _filmDetailHandler = StateObject(wrappedValue: FilmDetailHandler(film: film))
     }
 
