@@ -11,6 +11,11 @@
 		4541C6592AD95E1000558846 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541C6582AD95E1000558846 /* ContentView.swift */; };
 		4541C65B2AD95E1100558846 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4541C65A2AD95E1100558846 /* Assets.xcassets */; };
 		4541C65E2AD95E1100558846 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4541C65D2AD95E1100558846 /* Preview Assets.xcassets */; };
+		4541C6652AD960D900558846 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541C6642AD960D900558846 /* Character.swift */; };
+		4541C6692AD9622600558846 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541C6682AD9622600558846 /* Film.swift */; };
+		4541C66B2AD964A100558846 /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541C66A2AD964A100558846 /* Planet.swift */; };
+		4541C66D2AD9657600558846 /* Starship.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541C66C2AD9657600558846 /* Starship.swift */; };
+		4541C6702AD9687E00558846 /* Vehicle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541C66F2AD9687E00558846 /* Vehicle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		4541C6582AD95E1000558846 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4541C65A2AD95E1100558846 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4541C65D2AD95E1100558846 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4541C6642AD960D900558846 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		4541C6682AD9622600558846 /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
+		4541C66A2AD964A100558846 /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
+		4541C66C2AD9657600558846 /* Starship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Starship.swift; sourceTree = "<group>"; };
+		4541C66F2AD9687E00558846 /* Vehicle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vehicle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +63,7 @@
 			children = (
 				4541C6562AD95E1000558846 /* SWAppApp.swift */,
 				4541C6582AD95E1000558846 /* ContentView.swift */,
+				4541C6672AD961F400558846 /* Models */,
 				4541C65A2AD95E1100558846 /* Assets.xcassets */,
 				4541C65C2AD95E1100558846 /* Preview Content */,
 			);
@@ -65,6 +76,18 @@
 				4541C65D2AD95E1100558846 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4541C6672AD961F400558846 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4541C6642AD960D900558846 /* Character.swift */,
+				4541C6682AD9622600558846 /* Film.swift */,
+				4541C66A2AD964A100558846 /* Planet.swift */,
+				4541C66C2AD9657600558846 /* Starship.swift */,
+				4541C66F2AD9687E00558846 /* Vehicle.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +161,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4541C6592AD95E1000558846 /* ContentView.swift in Sources */,
+				4541C66B2AD964A100558846 /* Planet.swift in Sources */,
+				4541C6692AD9622600558846 /* Film.swift in Sources */,
+				4541C66D2AD9657600558846 /* Starship.swift in Sources */,
+				4541C6702AD9687E00558846 /* Vehicle.swift in Sources */,
 				4541C6572AD95E1000558846 /* SWAppApp.swift in Sources */,
+				4541C6652AD960D900558846 /* Character.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +308,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -309,6 +338,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
