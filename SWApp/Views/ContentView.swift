@@ -8,7 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var filmHandler = FilmHandler()
+    @StateObject var filmHandler: FilmHandler
+
+    init() {
+        var filmUrls = [URL?]()
+
+        for episodeNo in 1...9 {
+            let urlAsString = "https://swapi.dev/api/films/\(String(episodeNo))/"
+            filmUrls.append(URL(string: urlAsString))
+        }
+
+        let dataService = ProductionDataService<Film>(urls: filmUrls)
+
+        _filmHandler = StateObject(wrappedValue: FilmHandler(dataService: dataService))
+    }
 
     var body: some View {
         NavigationStack {
