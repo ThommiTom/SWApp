@@ -57,12 +57,13 @@ extension FilmDetailHandler {
     private func fetchCharacter(url: URL?) {
         characterGroup.enter()
         Task {
-            await NetworkManager.shared.networkCall(with: url) { (result: Result<Character, NetworkError>) in
+            NetworkManager.shared.networkCall(with: url) { (result: Result<Character, NetworkError>) in
                 switch result {
                 case .success(let character):
-                    DispatchQueue.main.async {
-                        self.characters.append(character)
-                    }
+                    self.characters.append(character)
+//                    DispatchQueue.main.async {
+//                        self.characters.append(character)
+//                    }
                 case .failure(let error):
                     print(error.rawValue)
                 }
@@ -87,7 +88,7 @@ extension FilmDetailHandler {
     private func fetchPlanet(url: URL?) {
         planetGroup.enter()
         Task {
-            await NetworkManager.shared.networkCall(with: url) { (result: Result<Planet, NetworkError>) in
+            NetworkManager.shared.networkCall(with: url) { (result: Result<Planet, NetworkError>) in
                 switch result {
                 case .success(let planet):
                     DispatchQueue.main.async {
@@ -117,7 +118,7 @@ extension FilmDetailHandler {
     private func fetchStarship(url: URL?) {
         starshipGroup.enter()
         Task {
-            await NetworkManager.shared.networkCall(with: url) { (result: Result<Starship, NetworkError>) in
+            NetworkManager.shared.networkCall(with: url) { (result: Result<Starship, NetworkError>) in
                 switch result {
                 case .success(let starship):
                     DispatchQueue.main.async {
@@ -147,7 +148,7 @@ extension FilmDetailHandler {
     private func fetchVehicle(url: URL?) {
         vehicleGroup.enter()
         Task {
-            await NetworkManager.shared.networkCall(with: url) { (result: Result<Vehicle, NetworkError>) in
+            NetworkManager.shared.networkCall(with: url) { (result: Result<Vehicle, NetworkError>) in
                 switch result {
                 case .success(let vehicle):
                     DispatchQueue.main.async {

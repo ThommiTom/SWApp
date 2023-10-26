@@ -12,7 +12,7 @@ class NetworkManager {
 
     private init() {}
 
-    func networkCall<T: Decodable>(with url: URL?, completion: @escaping (Result<T, NetworkError>) -> Void) async {
+    func networkCall<T: Decodable>(with url: URL?, completion: @escaping (Result<T, NetworkError>) -> Void) {
         guard let url = url else {
             completion(.failure(.failedCreatingURL))
             return

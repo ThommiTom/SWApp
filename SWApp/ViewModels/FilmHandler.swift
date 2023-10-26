@@ -46,7 +46,7 @@ extension FilmHandler {
     private func fetchStarWarsMovie(url: URL?) {
         filmGroup.enter()
         Task {
-            await NetworkManager.shared.networkCall(with: url) { (result: Result<Film, NetworkError>) in
+            NetworkManager.shared.networkCall(with: url) { (result: Result<Film, NetworkError>) in
                 switch result {
                 case .success(let film):
                     DispatchQueue.main.async {
