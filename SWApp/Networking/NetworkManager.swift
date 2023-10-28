@@ -54,8 +54,6 @@ class NetworkManager {
     static func networkCall<T: Decodable>(with url: URL?) async throws -> T {
         guard let url = url else { throw NetworkError.failedCreatingURL }
 
-        var result: T
-
         do {
             let (data, urlResponse) = try await URLSession.shared.data(from: url)
 
@@ -63,13 +61,11 @@ class NetworkManager {
             guard (200...299).contains(httpResponse.statusCode) else { throw NetworkError.invalidStatusCode }
             print("Status Code: \(httpResponse.statusCode) - \(url.absoluteString)")
 
-            result = try NetworkManager.parse(data: data)
-
+            let result: T = try NetworkManager.parse(data: data)
+            return result
         } catch {
             throw error
         }
-
-        return result
     }
 }
 
