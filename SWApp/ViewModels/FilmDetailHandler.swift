@@ -58,10 +58,9 @@ extension FilmDetailHandler {
             NetworkManager.networkCall(with: url) { (result: Result<Character, NetworkError>) in
                 switch result {
                 case .success(let character):
-                    self.characters.append(character)
-//                    DispatchQueue.main.async {
-//                        self.characters.append(character)
-//                    }
+                    DispatchQueue.main.async {
+                        self.characters.append(character)
+                    }
                 case .failure(let error):
                     print(error.rawValue)
                 }
