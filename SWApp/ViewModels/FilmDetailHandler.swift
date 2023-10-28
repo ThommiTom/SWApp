@@ -57,7 +57,7 @@ extension FilmDetailHandler {
     private func fetchCharacter(url: URL?) {
         characterGroup.enter()
         Task {
-            NetworkManager.shared.networkCall(with: url) { (result: Result<Character, NetworkError>) in
+            NetworkManager.networkCall(with: url) { (result: Result<Character, NetworkError>) in
                 switch result {
                 case .success(let character):
                     self.characters.append(character)
@@ -88,7 +88,7 @@ extension FilmDetailHandler {
     private func fetchPlanet(url: URL?) {
         planetGroup.enter()
         Task {
-            NetworkManager.shared.networkCall(with: url) { (result: Result<Planet, NetworkError>) in
+            NetworkManager.networkCall(with: url) { (result: Result<Planet, NetworkError>) in
                 switch result {
                 case .success(let planet):
                     DispatchQueue.main.async {
@@ -118,7 +118,7 @@ extension FilmDetailHandler {
     private func fetchStarship(url: URL?) {
         starshipGroup.enter()
         Task {
-            NetworkManager.shared.networkCall(with: url) { (result: Result<Starship, NetworkError>) in
+            NetworkManager.networkCall(with: url) { (result: Result<Starship, NetworkError>) in
                 switch result {
                 case .success(let starship):
                     DispatchQueue.main.async {
@@ -148,7 +148,7 @@ extension FilmDetailHandler {
     private func fetchVehicle(url: URL?) {
         vehicleGroup.enter()
         Task {
-            NetworkManager.shared.networkCall(with: url) { (result: Result<Vehicle, NetworkError>) in
+            NetworkManager.networkCall(with: url) { (result: Result<Vehicle, NetworkError>) in
                 switch result {
                 case .success(let vehicle):
                     DispatchQueue.main.async {

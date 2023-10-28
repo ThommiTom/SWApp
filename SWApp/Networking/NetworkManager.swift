@@ -8,11 +8,9 @@
 import Foundation
 
 class NetworkManager {
-    static let shared = NetworkManager()
-
     private init() {}
 
-    func networkCall<T: Decodable>(with url: URL?, completion: @escaping (Result<T, NetworkError>) -> Void) {
+    static func networkCall<T: Decodable>(with url: URL?, completion: @escaping (Result<T, NetworkError>) -> Void) {
         guard let url = url else {
             completion(.failure(.failedCreatingURL))
             return
@@ -48,12 +46,36 @@ class NetworkManager {
             }
 
             // parse data
-            self.parse(data: data, completion: completion)
+            NetworkManager.parse(data: data, completion: completion)
         }
         .resume()
     }
 
-    private func parse<T: Decodable>(data: Data, completion: @escaping (Result<T, NetworkError>) -> Void) {
+    static func networkCall<T: Decodable>(with url: URL?) async throws -> T {
+        guard let url = url else { throw NetworkError.failedCreatingURL }
+
+        var result: T
+
+        do {
+            let (data, urlResponse) = try await URLSession.shared.data(from: url)
+
+            guard let httpResponse = urlResponse as? HTTPURLResponse else { throw NetworkError.invalidResponse}
+            guard (200...299).contains(httpResponse.statusCode) else { throw NetworkError.invalidStatusCode }
+            print("Status Code: \(httpResponse.statusCode) - \(url.absoluteString)")
+
+            result = try NetworkManager.parse(data: data)
+
+        } catch {
+            throw error
+        }
+
+        return result
+    }
+}
+
+// Parsing helpers!
+extension NetworkManager {
+    private static func parse<T: Decodable>(data: Data, completion: @escaping (Result<T, NetworkError>) -> Void) {
         do {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -79,6 +101,35 @@ class NetworkManager {
         } catch {
             print("Unknown error while decoding.")
             completion(.failure(.invalidDecoding))
+        }
+    }
+
+    private static func parse<T: Decodable>(data: Data) throws -> T {
+        do {
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            decoder.dateDecodingStrategy = .iso8601
+
+            let element: T = try decoder.decode(T.self, from: data)
+            return element
+        } catch let DecodingError.dataCorrupted(context) {
+            print("Data corrupted: \(context)")
+            throw DecodingError.dataCorrupted(context)
+        } catch let DecodingError.keyNotFound(key, context) {
+            print("Key '\(key)' not found:", context.debugDescription)
+            print("codingPath:", context.codingPath)
+            throw DecodingError.keyNotFound(key, context)
+        } catch let DecodingError.valueNotFound(value, context) {
+            print("Value '\(value)' not found:", context.debugDescription)
+            print("codingPath:", context.codingPath)
+            throw DecodingError.valueNotFound(value, context)
+        } catch let DecodingError.typeMismatch(type, context) {
+            print("Type '\(type)' mismatch:", context.debugDescription)
+            print("codingPath:", context.codingPath)
+            throw DecodingError.typeMismatch(type, context)
+        } catch {
+            print("Unknown error while decoding.")
+            throw NetworkError.invalidDecoding
         }
     }
 }

@@ -28,6 +28,7 @@
 		4541C6882AD99BE700558846 /* PlanetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541C6872AD99BE700558846 /* PlanetDetailView.swift */; };
 		4541C68A2AD99D6000558846 /* StarshipDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541C6892AD99D6000558846 /* StarshipDetailView.swift */; };
 		4541C68C2AD99E5A00558846 /* VehicleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541C68B2AD99E5A00558846 /* VehicleDetailView.swift */; };
+		459474022AED79FC0047FE7F /* FilmList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459474012AED79FC0047FE7F /* FilmList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		4541C6872AD99BE700558846 /* PlanetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetDetailView.swift; sourceTree = "<group>"; };
 		4541C6892AD99D6000558846 /* StarshipDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarshipDetailView.swift; sourceTree = "<group>"; };
 		4541C68B2AD99E5A00558846 /* VehicleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VehicleDetailView.swift; sourceTree = "<group>"; };
+		459474012AED79FC0047FE7F /* FilmList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			children = (
 				4541C6642AD960D900558846 /* Character.swift */,
 				4541C6682AD9622600558846 /* Film.swift */,
+				459474012AED79FC0047FE7F /* FilmList.swift */,
 				4541C66A2AD964A100558846 /* Planet.swift */,
 				4541C66C2AD9657600558846 /* Starship.swift */,
 				4541C66F2AD9687E00558846 /* Vehicle.swift */,
@@ -243,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4541C6842AD9978600558846 /* CharacterDetailView.swift in Sources */,
+				459474022AED79FC0047FE7F /* FilmList.swift in Sources */,
 				4541C6782AD9787F00558846 /* FilmHandler.swift in Sources */,
 				4541C6592AD95E1000558846 /* ContentView.swift in Sources */,
 				4541C66B2AD964A100558846 /* Planet.swift in Sources */,
