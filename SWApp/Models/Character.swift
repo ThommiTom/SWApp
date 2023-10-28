@@ -22,8 +22,8 @@ struct Character: Decodable, Hashable {
     let starships: [URL]
     let vehicles: [URL]
     let url: URL
-//    let created: Date
-//    let edited: Date
+    let created: String
+    let edited: String
 
     static var example = Character(name: "Test",
                                    birthYear: "Test",
@@ -38,5 +38,7 @@ struct Character: Decodable, Hashable {
                                    species: [],
                                    starships: [],
                                    vehicles: [],
-                                   url: URL(string: "https://swapi.dev/api/people/1/")!)
+                                   url: URL(string: "https://swapi.dev/api/people/1/")!,
+                                   created: "Yesterday",
+                                   edited: "Today")
 }

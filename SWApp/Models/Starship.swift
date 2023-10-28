@@ -23,8 +23,8 @@ struct Starship: Decodable, Hashable {
     let starshipClass: String
     let pilots: [URL]
     let films: [URL]
-//    let created: Date
-//    let edited: Date
+    let created: String
+    let edited: String
     let url: URL
 
     static var example = Starship(name: "Test",
@@ -42,5 +42,7 @@ struct Starship: Decodable, Hashable {
                                   starshipClass: "Test",
                                   pilots: [],
                                   films: [],
+                                  created: "Yesterday",
+                                  edited: "Today",
                                   url: URL(string: "https://swapi.dev/api/people/1/")!)
 }
