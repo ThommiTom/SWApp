@@ -40,8 +40,6 @@ extension FilmDetailHandler {
         fetchVehicles()
     }
 
-    // TODO: pretty repetitive, refactor for a generic solution 
-
     private func fetchCharacters() {
         fetchingCharacters = true
 
