@@ -19,8 +19,8 @@ struct Planet: Decodable, Hashable {
     let population: String
     let residents: [URL]
     let films: [URL]
-//    let created: Date
-//    let edited: Date
+    let created: String
+    let edited: String
     let url: URL
 
     static var example = Planet(name: "Test",
@@ -34,5 +34,7 @@ struct Planet: Decodable, Hashable {
                                 population: "Test",
                                 residents: [],
                                 films: [],
+                                created: "Yesterday",
+                                edited: "Today",
                                 url: URL(string: "https://swapi.dev/api/people/1/")!)
 }

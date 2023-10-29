@@ -20,8 +20,8 @@ struct Vehicle: Decodable, Hashable {
     let vehicleClass: String
     let pilots: [URL]
     let films: [URL]
-//    let created: Date
-//    let edited: Date
+    let created: String
+    let edited: String
     let url: URL
 
     static let example = Vehicle(name: "Test",
@@ -36,5 +36,7 @@ struct Vehicle: Decodable, Hashable {
                                  vehicleClass: "Test",
                                  pilots: [],
                                  films: [],
+                                 created: "Yesterday",
+                                 edited: "Today",
                                  url: URL(string: "https://swapi.dev/api/people/1/")!)
 }

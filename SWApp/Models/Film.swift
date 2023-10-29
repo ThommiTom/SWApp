@@ -20,8 +20,8 @@ struct Film: Decodable, Hashable {
     let starships: [URL]
     let vehicles: [URL]
     let url: URL
-//    let created: Date
-//    let edited: Date
+    let created: String
+    let edited: String
 
     static let example = Film(episodeId: 0,
                               title: "Test",
@@ -34,5 +34,7 @@ struct Film: Decodable, Hashable {
                               species: [],
                               starships: [],
                               vehicles: [],
-                              url: URL(string: "https://swapi.dev/api/films/1/")!)
+                              url: URL(string: "https://swapi.dev/api/films/1/")!,
+                              created: "Yesterday",
+                              edited: "Today")
 }

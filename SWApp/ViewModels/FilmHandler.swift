@@ -8,57 +8,59 @@
 import Foundation
 
 class FilmHandler: ObservableObject {
-    @Published var films = [Film]()
+    @Published var filmList = FilmList()
     @Published var isDownloading = false
 
+    private let url: URL? = URL(string: "https://swapi.dev/api/films/")
+
     var sortedFilms: [Film] {
-        return films.sorted { $0.episodeId > $1.episodeId }
+        filmList.results.sorted { $0.episodeId > $1.episodeId}
     }
 
-    private var filmUrls: [URL?] = []
-    private var filmGroup = DispatchGroup()
-
     init() {
-        // assumption: swapi.dev provides data for all 9 episodes
-        // observation: unfortantly REST calls to swapi often fail
-        for episodeNo in 1...9 {
-            let urlAsString = "https://swapi.dev/api/films/\(String(episodeNo))/"
-            filmUrls.append(URL(string: urlAsString))
-        }
+        // uses network call with completion handler
+        // fetchStarWarsMovies()
 
-        fetchStarWarsMovies()
+        // uses network call with async throws network call and @MainActor
+        getStarWarsMovies()
     }
 }
 
 // MARK: - extending FilmHandler by networking functionality
 extension FilmHandler {
+    // Does not work with @MainActor, need DispatchQueue.main.async { ... }
     private func fetchStarWarsMovies() {
-        isDownloading = true
-        for url in filmUrls {
-            fetchStarWarsMovie(url: url)
-        }
-
-        filmGroup.notify(queue: DispatchQueue.main) {
-            self.isDownloading = false
-        }
-    }
-
-    private func fetchStarWarsMovie(url: URL?) {
-        filmGroup.enter()
+        self.isDownloading = true
         Task {
-            NetworkManager.shared.networkCall(with: url) { (result: Result<Film, NetworkError>) in
+            NetworkManager.networkCall(with: url) { [weak self] (result: Result<FilmList, NetworkError>) in
+                guard let self = self else { return }
+
                 switch result {
-                case .success(let film):
+                case .success(let filmList):
                     DispatchQueue.main.async {
-                        self.films.append(film)
+                        self.filmList = filmList
                     }
                 case .failure(let error):
-                    // TODO: create a mechanism to provide user about failure cases
                     print(error.rawValue)
                 }
 
-                self.filmGroup.leave()
+                DispatchQueue.main.async {
+                    self.isDownloading = false
+                }
             }
+        }
+    }
+
+    // Does work with @MainActor
+    private func getStarWarsMovies() {
+        Task { @MainActor in
+            isDownloading = true
+            do {
+                filmList = try await NetworkManager.networkCall(with: url)
+            } catch {
+                print(error.localizedDescription)
+            }
+            isDownloading = false
         }
     }
 }
