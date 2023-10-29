@@ -27,24 +27,25 @@ class FilmDetailHandler: ObservableObject {
 
     init(film: Film) {
         self.film = film
-        fetchFilmDetails()
+        getFilmDetails()
     }
 }
 
 // MARK: - extending FilmDetailHandler by networking functionality
 extension FilmDetailHandler {
-    private func fetchFilmDetails() {
-        fetchCharacters()
-        fetchPlanets()
-        fetchStarships()
+    private func getFilmDetails() {
+        getCharacters()
+        getPlanets()
+        getStarships()
         fetchVehicles()
     }
 
-    private func fetchCharacters() {
+    // MARK: - Characters
+    private func getCharacters() {
         fetchingCharacters = true
 
         for url in film.characters {
-            fetchCharacter(url: url)
+            handleCharacterURL(for: url)
         }
 
         characterGroup.notify(queue: DispatchQueue.main) {
@@ -52,15 +53,30 @@ extension FilmDetailHandler {
         }
     }
 
-    private func fetchCharacter(url: URL?) {
+    // gets character either from cache or server
+    private func handleCharacterURL(for url: URL?) {
+        guard let unwrappedURL = url else { return }
+
+        if let character = Caches.instance.characterCache.get(key: unwrappedURL) {
+            self.characters.append(character)
+        } else {
+            fetchCharacter(with: url)
+        }
+    }
+
+    // fetches character from server
+    private func fetchCharacter(with url: URL?) {
         characterGroup.enter()
         Task {
-            NetworkManager.networkCall(with: url) { (result: Result<Character, NetworkError>) in
+            NetworkManager.networkCall(with: url) { [weak self] (result: Result<Character, NetworkError>) in
+                guard let self = self else { return }
+
                 switch result {
                 case .success(let character):
                     DispatchQueue.main.async {
                         self.characters.append(character)
                     }
+                    Caches.instance.characterCache.add(key: url!, value: character)
                 case .failure(let error):
                     print(error.rawValue)
                 }
@@ -70,11 +86,12 @@ extension FilmDetailHandler {
         }
     }
 
-    private func fetchPlanets() {
+    // MARK: - Planets
+    private func getPlanets() {
         fetchingPlanets = true
 
         for url in film.planets {
-            fetchPlanet(url: url)
+            handlePlanetURL(for: url)
         }
 
         planetGroup.notify(queue: DispatchQueue.main) {
@@ -82,15 +99,30 @@ extension FilmDetailHandler {
         }
     }
 
-    private func fetchPlanet(url: URL?) {
+    // gets planet either from cache or server
+    private func handlePlanetURL(for url: URL?) {
+        guard let unwrappedURL = url else { return }
+
+        if let planet = Caches.instance.planetCache.get(key: unwrappedURL) {
+            self.planets.append(planet)
+        } else {
+            fetchPlanet(with: url)
+        }
+    }
+
+    // fetches planet from server
+    private func fetchPlanet(with url: URL?) {
         planetGroup.enter()
         Task {
-            NetworkManager.networkCall(with: url) { (result: Result<Planet, NetworkError>) in
+            NetworkManager.networkCall(with: url) { [weak self] (result: Result<Planet, NetworkError>) in
+                guard let self = self else { return }
+
                 switch result {
                 case .success(let planet):
                     DispatchQueue.main.async {
                         self.planets.append(planet)
                     }
+                    Caches.instance.planetCache.add(key: url!, value: planet)
                 case .failure(let error):
                     print(error.rawValue)
                 }
@@ -100,11 +132,12 @@ extension FilmDetailHandler {
         }
     }
 
-    private func fetchStarships() {
+    // MARK: - Starships
+    private func getStarships() {
         fetchingStarships = true
 
         for url in film.starships {
-            fetchStarship(url: url)
+            handleStarshipURL(for: url)
         }
 
         starshipGroup.notify(queue: DispatchQueue.main) {
@@ -112,15 +145,30 @@ extension FilmDetailHandler {
         }
     }
 
+    // gets starship either from cache or server
+    private func handleStarshipURL(for url: URL?) {
+        guard let unwrappedURL = url else { return }
+
+        if let starship = Caches.instance.starshipCache.get(key: unwrappedURL) {
+            self.starships.append(starship)
+        } else {
+            fetchStarship(url: url)
+        }
+    }
+
+    // fetches starship from server
     private func fetchStarship(url: URL?) {
         starshipGroup.enter()
         Task {
-            NetworkManager.networkCall(with: url) { (result: Result<Starship, NetworkError>) in
+            NetworkManager.networkCall(with: url) { [weak self] (result: Result<Starship, NetworkError>) in
+                guard let self = self else { return }
+
                 switch result {
                 case .success(let starship):
                     DispatchQueue.main.async {
                         self.starships.append(starship)
                     }
+                    Caches.instance.starshipCache.add(key: url!, value: starship)
                 case .failure(let error):
                     print(error.rawValue)
                 }
@@ -130,11 +178,12 @@ extension FilmDetailHandler {
         }
     }
 
+    // MARK: - Vehicles
     private func fetchVehicles() {
         fetchingVehicles = true
 
         for url in film.vehicles {
-            fetchVehicle(url: url)
+            handleVehicleURL(for: url)
         }
 
         vehicleGroup.notify(queue: DispatchQueue.main) {
@@ -142,15 +191,30 @@ extension FilmDetailHandler {
         }
     }
 
+    // gets vehicle either from cache or server
+    private func handleVehicleURL(for url: URL?) {
+        guard let unwrappedURL = url else { return }
+
+        if let vehicle = Caches.instance.vehicleCache.get(key: unwrappedURL) {
+            self.vehicles.append(vehicle)
+        } else {
+            fetchVehicle(url: url)
+        }
+    }
+
+    // fetches vehicle from server
     private func fetchVehicle(url: URL?) {
         vehicleGroup.enter()
         Task {
-            NetworkManager.networkCall(with: url) { (result: Result<Vehicle, NetworkError>) in
+            NetworkManager.networkCall(with: url) { [weak self] (result: Result<Vehicle, NetworkError>) in
+                guard let self = self else { return }
+
                 switch result {
                 case .success(let vehicle):
                     DispatchQueue.main.async {
                         self.vehicles.append(vehicle)
                     }
+                    Caches.instance.vehicleCache.add(key: url!, value: vehicle)
                 case .failure(let error):
                     print(error.rawValue)
                 }
