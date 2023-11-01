@@ -24,6 +24,18 @@ struct Vehicle: Decodable, Hashable {
     let edited: String
     let url: URL
 
+    var createdDate: Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SZ"
+        return dateFormatter.date(from: created)
+    }
+
+    var editedDate: Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SZ"
+        return dateFormatter.date(from: edited)
+    }
+
     static let example = Vehicle(name: "Test",
                                  manufacturer: "Test",
                                  costInCredits: "Test",
