@@ -39,6 +39,10 @@ extension FilmHandler {
                 case .success(let filmList):
                     DispatchQueue.main.async {
                         self.filmList = filmList
+
+                        for film in filmList.results {
+                            Caches.instance.filmCache.add(key: film.url, value: film)
+                        }
                     }
                 case .failure(let error):
                     print(error.rawValue)
@@ -57,6 +61,9 @@ extension FilmHandler {
             isDownloading = true
             do {
                 filmList = try await NetworkManager.networkCall(with: url)
+                for film in filmList.results {
+                    Caches.instance.filmCache.add(key: film.url, value: film)
+                }
             } catch {
                 print(error.localizedDescription)
             }

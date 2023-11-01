@@ -28,6 +28,18 @@ struct ContentView: View {
             .navigationDestination(for: Film.self) { film in
                 FilmDetailView(film: film)
             }
+            .navigationDestination(for: Character.self) { character in
+                CharacterDetailView(character: character)
+            }
+            .navigationDestination(for: Planet.self) { planet in
+                PlanetDetailView(planet: planet)
+            }
+            .navigationDestination(for: Starship.self) { starship in
+                StarshipDetailView(starship: starship)
+            }
+            .navigationDestination(for: Vehicle.self) { vehicle in
+                VehicleDetailView(vehicle: vehicle)
+            }
         }
     }
 }
