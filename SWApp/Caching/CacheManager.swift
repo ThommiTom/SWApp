@@ -31,13 +31,15 @@ extension Caches {
         private func getTypeAsString(for value: T) -> String {
             switch value {
             case is Character:
-                return "Character-Cache"
+                return "\(Character.typeDescription)-Cache"
             case is Planet:
-                return "Planet-Cache"
+                return "\(Planet.typeDescription)-Cache"
             case is Starship:
-                return "Starship-Cache"
+                return "\(Starship.typeDescription)-Cache"
             case is Vehicle:
-                return "Vehicle-Cache"
+                return "\(Vehicle.typeDescription)-Cache"
+            case is Film:
+                return "\(Film.typeDescription)-Cache"
             default:
                 return "Unknown Cache"
             }

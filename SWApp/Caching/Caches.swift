@@ -9,6 +9,7 @@ import Foundation
 
 class Caches {
     private init() {
+        filmCache = CacheManager<Film>()
         characterCache = CacheManager<Character>()
         planetCache = CacheManager<Planet>()
         starshipCache = CacheManager<Starship>()
@@ -17,6 +18,7 @@ class Caches {
 
     static var instance = Caches()
 
+    let filmCache: CacheManager<Film>
     let characterCache: CacheManager<Character>
     let planetCache: CacheManager<Planet>
     let starshipCache: CacheManager<Starship>
