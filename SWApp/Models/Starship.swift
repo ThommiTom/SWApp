@@ -39,6 +39,8 @@ struct Starship: Decodable, Hashable {
         return dateFormatter.date(from: edited)
     }
 
+    static let typeDescription = "Starship"
+
     static var example = Starship(name: "Test",
                                   model: "Test",
                                   manufacturer: "Test",

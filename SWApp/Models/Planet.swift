@@ -35,6 +35,8 @@ struct Planet: Decodable, Hashable {
         return dateFormatter.date(from: edited)
     }
 
+    static let typeDescription = "Planet"
+
     static var example = Planet(name: "Test",
                                 rotationPeriod: "Test",
                                 orbitalPeriod: "Test",

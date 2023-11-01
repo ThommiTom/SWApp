@@ -35,6 +35,8 @@ struct Film: Decodable, Hashable {
         return dateFormatter.date(from: edited)
     }
 
+    static let typeDescription = "Film"
+
     static let example = Film(episodeId: 0,
                               title: "Test",
                               openingCrawl: "Test Test Test Test",

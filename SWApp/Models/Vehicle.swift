@@ -36,6 +36,8 @@ struct Vehicle: Decodable, Hashable {
         return dateFormatter.date(from: edited)
     }
 
+    static let typeDescription = "Vehicle"
+
     static let example = Vehicle(name: "Test",
                                  manufacturer: "Test",
                                  costInCredits: "Test",

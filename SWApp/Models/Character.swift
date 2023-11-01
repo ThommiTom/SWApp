@@ -37,6 +37,8 @@ struct Character: Decodable, Hashable {
         return dateFormatter.date(from: edited)
     }
 
+    static let typeDescription = "Character"
+
     static var example = Character(name: "Test",
                                    birthYear: "Test",
                                    homeworld: URL(string: "https://swapi.dev/api/people/1/")!,
