@@ -25,6 +25,18 @@ struct Character: Decodable, Hashable {
     let created: String
     let edited: String
 
+    var createdDate: Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SZ"
+        return dateFormatter.date(from: created)
+    }
+
+    var editedDate: Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SZ"
+        return dateFormatter.date(from: edited)
+    }
+
     static var example = Character(name: "Test",
                                    birthYear: "Test",
                                    homeworld: URL(string: "https://swapi.dev/api/people/1/")!,
