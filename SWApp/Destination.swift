@@ -11,5 +11,5 @@ protocol Destination: Hashable, Identifiable, View {}
 
 extension Destination {
     // Identifiable conformance
-    var id: String { String(describing: self) }
+    var id: UUID { UUID() }
 }
