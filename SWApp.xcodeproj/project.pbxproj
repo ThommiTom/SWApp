@@ -31,6 +31,11 @@
 		457FB9D42AEE30B000CBC691 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457FB9D32AEE30B000CBC691 /* CacheManager.swift */; };
 		457FB9D72AEE57F600CBC691 /* Caches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457FB9D62AEE57F600CBC691 /* Caches.swift */; };
 		459474022AED79FC0047FE7F /* FilmList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 459474012AED79FC0047FE7F /* FilmList.swift */; };
+		45E9E6352B07C62A00608714 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9E6342B07C62A00608714 /* AppCoordinator.swift */; };
+		45E9E6372B07C67B00608714 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9E6362B07C67B00608714 /* Destination.swift */; };
+		45E9E6392B07C72A00608714 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9E6382B07C72A00608714 /* Route.swift */; };
+		45E9E63B2B07CEAD00608714 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9E63A2B07CEAD00608714 /* ErrorView.swift */; };
+		45E9E63D2B07E86400608714 /* FilmListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E9E63C2B07E86400608714 /* FilmListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +64,11 @@
 		457FB9D32AEE30B000CBC691 /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		457FB9D62AEE57F600CBC691 /* Caches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caches.swift; sourceTree = "<group>"; };
 		459474012AED79FC0047FE7F /* FilmList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmList.swift; sourceTree = "<group>"; };
+		45E9E6342B07C62A00608714 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		45E9E6362B07C67B00608714 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
+		45E9E6382B07C72A00608714 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		45E9E63A2B07CEAD00608714 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		45E9E63C2B07E86400608714 /* FilmListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +102,9 @@
 			isa = PBXGroup;
 			children = (
 				4541C6562AD95E1000558846 /* SWAppApp.swift */,
+				45E9E6342B07C62A00608714 /* AppCoordinator.swift */,
+				45E9E6362B07C67B00608714 /* Destination.swift */,
+				45E9E6382B07C72A00608714 /* Route.swift */,
 				4541C67A2AD97C1300558846 /* Views */,
 				4541C6792AD9788300558846 /* ViewModels */,
 				4541C6672AD961F400558846 /* Models */,
@@ -146,6 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				4541C6582AD95E1000558846 /* ContentView.swift */,
+				45E9E63A2B07CEAD00608714 /* ErrorView.swift */,
+				45E9E63C2B07E86400608714 /* FilmListView.swift */,
 				4541C67D2AD9817F00558846 /* ActivityIndicator.swift */,
 				4541C67B2AD97EE900558846 /* FilmLabel.swift */,
 				4541C6852AD9986C00558846 /* KeyValueLabel.swift */,
@@ -264,14 +279,18 @@
 				457FB9D72AEE57F600CBC691 /* Caches.swift in Sources */,
 				4541C6782AD9787F00558846 /* FilmHandler.swift in Sources */,
 				4541C6592AD95E1000558846 /* ContentView.swift in Sources */,
+				45E9E63D2B07E86400608714 /* FilmListView.swift in Sources */,
 				4541C66B2AD964A100558846 /* Planet.swift in Sources */,
+				45E9E6352B07C62A00608714 /* AppCoordinator.swift in Sources */,
 				4541C6862AD9986C00558846 /* KeyValueLabel.swift in Sources */,
 				4541C6692AD9622600558846 /* Film.swift in Sources */,
 				457FB9D42AEE30B000CBC691 /* CacheManager.swift in Sources */,
 				4541C68C2AD99E5A00558846 /* VehicleDetailView.swift in Sources */,
+				45E9E63B2B07CEAD00608714 /* ErrorView.swift in Sources */,
 				4541C67E2AD9817F00558846 /* ActivityIndicator.swift in Sources */,
 				4541C67C2AD97EE900558846 /* FilmLabel.swift in Sources */,
 				4541C66D2AD9657600558846 /* Starship.swift in Sources */,
+				45E9E6372B07C67B00608714 /* Destination.swift in Sources */,
 				4541C6702AD9687E00558846 /* Vehicle.swift in Sources */,
 				4541C6732AD96B6D00558846 /* NetworkManager.swift in Sources */,
 				4541C6822AD98EB900558846 /* FilmDetailView.swift in Sources */,
@@ -280,6 +299,7 @@
 				4541C6802AD986BB00558846 /* FilmDetailHandler.swift in Sources */,
 				4541C6572AD95E1000558846 /* SWAppApp.swift in Sources */,
 				4541C6652AD960D900558846 /* Character.swift in Sources */,
+				45E9E6392B07C72A00608714 /* Route.swift in Sources */,
 				4541C68A2AD99D6000558846 /* StarshipDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

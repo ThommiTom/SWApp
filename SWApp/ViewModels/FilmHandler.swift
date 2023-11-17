@@ -9,7 +9,14 @@ import Foundation
 
 class FilmHandler: ObservableObject {
     @Published var filmList = FilmList()
-    @Published var isDownloading = false
+    @Published var viewState: ViewState = .none
+
+    enum ViewState {
+        case none
+        case downloadingData
+        case presentingData
+        case presentDownloadError(Error)
+    }
 
     private let url: URL? = URL(string: "https://swapi.dev/api/films/")
 
@@ -18,9 +25,6 @@ class FilmHandler: ObservableObject {
     }
 
     init() {
-        // uses network call with completion handler
-        // fetchStarWarsMovies()
-
         // uses network call with async throws network call and @MainActor
         getStarWarsMovies()
     }
@@ -30,7 +34,7 @@ class FilmHandler: ObservableObject {
 extension FilmHandler {
     // Does not work with @MainActor, need DispatchQueue.main.async { ... }
     private func fetchStarWarsMovies() {
-        self.isDownloading = true
+        self.viewState = .downloadingData
         Task {
             NetworkManager.networkCall(with: url) { [weak self] (result: Result<FilmList, NetworkError>) in
                 guard let self = self else { return }
@@ -45,29 +49,29 @@ extension FilmHandler {
                         }
                     }
                 case .failure(let error):
-                    print(error.rawValue)
+                    self.viewState = .presentDownloadError(error)
                 }
 
                 DispatchQueue.main.async {
-                    self.isDownloading = false
+                    self.viewState = .presentingData
                 }
             }
         }
     }
 
     // Does work with @MainActor
-    private func getStarWarsMovies() {
+    func getStarWarsMovies() {
+        self.viewState = .downloadingData
         Task { @MainActor in
-            isDownloading = true
             do {
                 filmList = try await NetworkManager.networkCall(with: url)
                 for film in filmList.results {
                     Caches.instance.filmCache.add(key: film.url, value: film)
                 }
+                viewState = .presentingData
             } catch {
-                print(error.localizedDescription)
+                viewState = .presentDownloadError(error)
             }
-            isDownloading = false
         }
     }
 }

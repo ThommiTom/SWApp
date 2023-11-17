@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FilmDetailView: View {
+    @EnvironmentObject var coordinator: AppCoordinator
     @StateObject var filmDetailHandler: FilmDetailHandler
 
     init(film: Film) {
@@ -52,6 +53,10 @@ struct FilmDetailView: View {
                         NavigationLink(value: character) {
                             Text(character.name)
                         }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            coordinator.push(.character(character))
+                        }
                     }
                 }
             }
@@ -68,6 +73,10 @@ struct FilmDetailView: View {
                     VStack(alignment: .leading) {
                         NavigationLink(value: planet) {
                             Text(planet.name)
+                        }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            coordinator.push(.planet(planet))
                         }
                     }
                 }
@@ -86,6 +95,10 @@ struct FilmDetailView: View {
                         NavigationLink(value: starship) {
                             Text(starship.name)
                         }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            coordinator.push(.starship(starship))
+                        }
                     }
                 }
             }
@@ -102,6 +115,10 @@ struct FilmDetailView: View {
                     VStack(alignment: .leading) {
                         NavigationLink(value: vehicle) {
                             Text(vehicle.name)
+                        }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            coordinator.push(.vehicle(vehicle))
                         }
                     }
                 }
