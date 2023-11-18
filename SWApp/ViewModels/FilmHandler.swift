@@ -11,13 +11,6 @@ class FilmHandler: ObservableObject {
     @Published var filmList = FilmList()
     @Published var viewState: ViewState = .none
 
-    enum ViewState {
-        case none
-        case downloadingData
-        case presentingData
-        case presentDownloadError(Error)
-    }
-
     private let url: URL? = URL(string: "https://swapi.dev/api/films/")
 
     var sortedFilms: [Film] {

@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+protocol Destination: Hashable, Identifiable, View {}
+
 enum Route: Destination {
     case character(Character)
     case film(Film)
@@ -14,6 +16,10 @@ enum Route: Destination {
     case starship(Starship)
     case vehicle(Vehicle)
 
+    // Identifiable conformance
+    var id: UUID { UUID() }
+
+    // View conformance
     @ViewBuilder var body: some View {
         switch self {
         case .character(let character): CharacterDetailView(character: character)
