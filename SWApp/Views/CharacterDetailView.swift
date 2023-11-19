@@ -57,37 +57,32 @@ struct CharacterDetailView: View {
         }
     }
 
-    var flownStarshipsSection: some View {
-        Group {
-            if !handler.starshipsFlown.isEmpty {
-                Section("Flown Starships") {
-                    ForEach(handler.starshipsFlown, id: \.self) { starship in
-                        NavigationLink(value: starship) {
-                            Text(starship.name)
-                        }
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            coordinator.push(.starship(starship))
-                        }
+    @ViewBuilder var flownStarshipsSection: some View {
+        if !handler.starshipsFlown.isEmpty {
+            Section("Flown Starships") {
+                ForEach(handler.starshipsFlown, id: \.self) { starship in
+                    NavigationLink(value: starship) {
+                        Text(starship.name)
+                    }
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        coordinator.push(.starship(starship))
                     }
                 }
             }
         }
     }
 
-    var drivenVehicleSection: some View {
-
-        Group {
-            if !handler.vehiclesDriven.isEmpty {
-                Section("Driven Vehicles") {
-                    ForEach(handler.vehiclesDriven, id: \.self) { vehicle in
-                        NavigationLink(value: vehicle) {
-                            Text(vehicle.name)
-                        }
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            coordinator.push(.vehicle(vehicle))
-                        }
+    @ViewBuilder var drivenVehicleSection: some View {
+        if !handler.vehiclesDriven.isEmpty {
+            Section("Driven Vehicles") {
+                ForEach(handler.vehiclesDriven, id: \.self) { vehicle in
+                    NavigationLink(value: vehicle) {
+                        Text(vehicle.name)
+                    }
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        coordinator.push(.vehicle(vehicle))
                     }
                 }
             }
