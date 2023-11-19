@@ -69,7 +69,7 @@ class NetworkManager {
     }
 }
 
-// Parsing helpers!
+// MARK: - Parsing helpers!
 extension NetworkManager {
     private static func parse<T: Decodable>(data: Data, completion: @escaping (Result<T, NetworkError>) -> Void) {
         do {
@@ -127,5 +127,22 @@ extension NetworkManager {
             print("Unknown error while decoding.")
             throw NetworkError.invalidDecoding
         }
+    }
+}
+
+// MARK: - generic helpers
+extension NetworkManager {
+    static func fetchData<Element: Decodable>(with url: URL) -> Element? {
+        var item: Element?
+
+        NetworkManager.networkCall(with: url) { (result: Result<Element, NetworkError>) in
+            switch result {
+            case .success(let fetchedItem):
+                item = fetchedItem
+            case .failure:
+                item = nil
+            }
+        }
+        return item
     }
 }
