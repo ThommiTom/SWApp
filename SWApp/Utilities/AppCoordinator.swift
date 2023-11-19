@@ -24,4 +24,6 @@ extension AppCoordinator {
     @MainActor func popToRoot() {
         navigationPath.removeLast(navigationPath.count)
     }
+
+    var reached2ndLvl: Bool { navigationPath.count > 1 }
 }

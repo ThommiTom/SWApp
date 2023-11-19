@@ -37,6 +37,13 @@ struct CharacterDetailView: View {
             }
         }
         .navigationTitle("Character Details")
+        .toolbar {
+            Button(action: {
+                coordinator.popToRoot()
+            }, label: {
+                Image(systemName: "house")
+            })
+        }
     }
 
     var playedInSection: some View {

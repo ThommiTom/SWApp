@@ -37,6 +37,13 @@ struct PlanetDetailView: View {
             }
         }
         .navigationTitle("Planet Details")
+        .toolbar {
+            Button(action: {
+                coordinator.popToRoot()
+            }, label: {
+                Image(systemName: "house")
+            })
+        }
     }
 
     @ViewBuilder var moviesThisPlanetAppeared: some View {
